@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ title }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    h1 { margin-bottom: 8px; }
+    .meta { color: #444; margin-bottom: 16px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 16px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+    th { background: #f5f5f5; }
+    td:first-child, th:first-child { text-align: left; }
+    .chart { margin: 24px 0; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <div class="meta">Generated at: {{ generated_at }}</div>
+
+  <div class="chart">
+    <img src="{{ chart_path }}" alt="Sales Chart" style="max-width: 100%; height: auto;" />
+  </div>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Total Orders: <strong>{{ total_orders }}</strong></li>
+    <li>Total Revenue: <strong>{{ total_revenue }}</strong></li>
+    <li>Best Day: <strong>{{ best_day.date }}</strong> ({{ best_day.revenue }})</li>
+  </ul>
+
+  <h2>Data</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th><th>Orders</th><th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in rows %}
+      <tr>
+        <td>{{ r.date }}</td>
+        <td>{{ r.orders }}</td>
+        <td>{{ r.revenue }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

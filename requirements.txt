@@ -1,0 +1,7 @@
+
+pandas
+matplotlib
+jinja2
+python-dotenv
+reportlab
+schedule
